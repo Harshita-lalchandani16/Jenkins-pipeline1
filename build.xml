@@ -1,0 +1,20 @@
+<project name="HelloWorld Project" default="run" basedir="."> [cite: 277]
+    <property name="src.dir" value="./"/> <property name="build.dir" value="build"/> <target name="clean" description="Cleans the build directory"> [cite: 283]
+        <echo message="Cleaning the build directory: ${build.dir}"/> [cite: 284]
+        <delete dir="${build.dir}"/> [cite: 285]
+    </target>
+
+    <target name="compile" description="Compiles the Java source files" depends="clean"> [cite: 288]
+        <echo message="Compiling Java source files in ${src.dir}..."/> [cite: 289]
+        <mkdir dir="${build.dir}"/> <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/> [cite: 291]
+    </target>
+
+    <target name="run" description="Runs the compiled Java program" depends="compile"> [cite: 294]
+        <echo message="Running the Java program..."/> [cite: 295]
+        <java classname="Main" fork="true"> 
+            <classpath> [cite: 297]
+                <pathelement path="${build.dir}"/> [cite: 298]
+            </classpath> [cite: 299]
+        </java> [cite: 300]
+    </target>
+</project>
